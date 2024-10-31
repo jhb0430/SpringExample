@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-	@ResponseBody
+	@ResponseBody	// object 타입인듯
 	@RequestMapping("/hello")
 	public String helloWorld() {
 		return "Hello World!!";
 		
 	}
 	
+
 }
