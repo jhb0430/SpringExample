@@ -29,6 +29,16 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	
+//		dependency 추가
+//		build.gradle에 디펜던시를 추가한다.
+//
+//		필요한 라이브러리들을 검색해서 dependencies에 코드를 추가하고,
+//		build.gradle 우측 마우스 클릭 > Gradle > Gradle Refresh Project 를 누르면 적용된다.
+//
+//		반드시 build refresh 할 것!!! (안하면 404의 늪에 빠진다.)
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
 }
 
 tasks.named('test') {
