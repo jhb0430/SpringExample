@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- ↓xml의 태그 규격을 dtd라는 파일로 -> 규격에 안맞으면 x 표시뜸 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			<!-- 연결될 레파지토리 이름 적으면 됨  -->
+<mapper namespace="com.jhb0430.spring.ex.database.repository.UsedGoodsRepository">
+	<select id="selectUsedGoodsList" resultType="com.jhb0430.spring.ex.database.domain.UsedGoods">
+		<!-- 메소드 이름 . 파라미터 . 리턴타입(resultType - 리스트인 경우 생략하고 경로를 적어줌-)  다 지정해줘야함 -->
+	
+		SELECT
+			`id`
+			,`sellerId`
+			,`sellerId`
+			,`title`
+			,`price`
+			,`description`
+			,`image`
+			,`createdAt`
+			,`updatedAt`
+		FROM 
+			`used_goods`;
+	
+	</select>
+
+</mapper>
