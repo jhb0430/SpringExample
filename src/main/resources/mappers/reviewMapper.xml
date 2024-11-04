@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.jhb0430.spring.ex.mybatis.repository.ReviewRepository">
+	<select id="selectReview" 
+	resultType="com.jhb0430.spring.ex.mybatis.domain.Review"
+	parameterType="int"><!-- 파라미터타입이라는 속성 추가. 
+	얘는 마이바티스가 아는 문법이니까 형태만 적어줘도 된다 -->
+	
+	SELECT
+		`id`
+		,`storeId`
+		,`menu`
+		,`userName`
+		,`point`
+		,`review`
+		,`createdAt`
+		,`updatedAt`
+	FROM
+		`new_review`
+	WHERE
+		<!--  `id`= 5;	-->
+		`id`= #{id};	
+		<!--  5가 아니라 어떤 값이든 
+		자유롭게 넣을 수 있도록 설정하면 
+		활용하기 편리해지지 않을까? → 변수를 쓰면 되지 않을까?
+		→ 그게 바로 파라미터 이용하는 거임 (repository 가보십시오)
+		-->
+	
+	
+	
+	
+	
+	</select>
+	</mapper>
