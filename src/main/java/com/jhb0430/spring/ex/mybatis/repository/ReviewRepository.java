@@ -21,7 +21,21 @@ public interface ReviewRepository {
 		public Review selectReview(@Param("id")int id); // 뒤의 int id는 자바문법으로써의 변수.
 //						수행하는 과정에서 전달된 값이 xml에서 쓰여야한다ㄴ
 		
-			
+
+		
+		// 전달받은 리뷰 정보를 기반으로 insert 한다
+		// 행의 갯수가 리턴되기때문에 리턴타입이 int다
+		public int insertReview(
+				@Param("storeId")int storId
+				,@Param("menu") String menu
+				, @Param("userName")String userName
+				,@Param("point")double point
+				, @Param("review")String review
+				
+				);
+		
+		// 전달 받은 Review 객체로 insert 한다
+		public int insertReviewByObject(Review review);
 			
 	}
 

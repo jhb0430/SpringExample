@@ -29,9 +29,52 @@
 		→ 그게 바로 파라미터 이용하는 거임 (repository 가보십시오)
 		-->
 	
-	
-	
-	
-	
 	</select>
+	<insert id="insertReview" parameterType="map">
+	<!--  insert는 resultType이 없다 -->
+	
+		INSERT INTO
+				`new_review`
+		(
+		`storeId`
+		,`menu`
+		,`userName`
+		,`point`
+		,`review`
+		)
+		VALUE
+		(
+		#{storeId}
+		,#{menu}	
+		,#{userName}	
+		,#{point}	
+		,#{review}	
+		);
+	</insert>
+	
+	<insert id="insertReviewByObject" 
+	parameterType="com.jhb0430.spring.ex.mybatis.domain.Review">
+	
+		INSERT INTO
+				`new_review`
+		(
+		`storeId`
+		,`menu`
+		,`userName`
+		,`point`
+		,`review`
+		)
+		VALUE
+		(
+		#{storeId} <!-- 엔티티 클래스에 적혀있는 변수이름으로 적어야함 -->
+		,#{menu}	
+		,#{userName}	
+		,#{point}	
+		,#{review}	
+		);
+	</insert>
+	
+	
+	
+	
 	</mapper>

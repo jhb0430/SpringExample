@@ -9,9 +9,17 @@ public class Review {
 	private int storeId;
 	private String menu;
 	private String userName;
+	private Double point;
+	public Double getPoint() {
+		return point;
+	}
+	public void setPoint(Double point) {
+		this.point = point;
+	}
 	private String review;
 	private LocalDateTime createdAt; 
 	private LocalDateTime updatedAt;
+	
 	public int getId() {
 		return id;
 	}

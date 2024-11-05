@@ -40,5 +40,35 @@ public class ReviewService {
 	
 	// 근데 다른 id 조회하고 싶어지면 어캄???
 	// -> xml 파일 가보십시오 
+		
+		
+		
+		
+		// 전달받은 리뷰 정보를 기반으로 리뷰 저장
+		public int addReview(
+				int storId
+				, String menu
+				, String userName
+				,double point
+				, String review
+				) {
+			
+			// 전달받은 리뷰 내용으로 new_review 테이블에 insert
+			int count = reviewRepository.insertReview(storId, menu, userName, point, review);
+	
+			return count;
+		
+		}
+		
+		// 전달받은 Review 객체를 통해 저장
+		public int addReviewByObject(Review review){
+			
+			// 전달받은 Review 객체로 new_review에 insert
+			int count = reviewRepository.insertReviewByObject(review);
+		
+			return count;
+		}
+		
+		
 	
 }
