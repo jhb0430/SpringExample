@@ -31,17 +31,40 @@ http의 메소드(get/post)에 대한 정보가 어디에도 없는데, -> @Requ
 //	@RequestMapping("/mvc/user/create")
 	@PostMapping("/create")
 	// 포스트 맵핑은 요청방식이 폼인데... html 구성해서 써야하는데 -> servlet 기억나죵..???
-	@ResponseBody
+//	@ResponseBody - 리다이렉트 할거니까 필요없어짐 
 	public String createUser(
 			@RequestParam("name")String name
 			,@RequestParam("birthday") String birthday
 			,@RequestParam("email") String email
-			,@RequestParam("introduce")String introduce){
+			,@RequestParam("introduce")String introduce
+			// 모델 객체 추가
+			, Model model
+			){
 	// 요청에 의해 전달된 파라미터를 전달할 것이기 때문에 @RequestParam
 		
-		int count = userService.addUser(name, birthday, email, introduce);
+//		int count = userService.addUser(name, birthday, email, introduce);
 		
-		return "삽입 성공 : " + count;
+		// new user 엔티티 클래스는 조회를 위해서 이미 만들어 져 있다 
+		User user =new User();
+		user.setName(name);
+		user.setYyyymmdd(birthday);
+		user.setEmail(email);
+		user.setIntroduce(introduce);
+		
+		// 서비스, 레파지토리로 전달되는 것 뿐인데, 이걸 객체 자체로 이해해도 되고 
+		// 객체는 변수에 저장된다고(변수가 다른데서 쓰이면 그 값이 옮겨가는게 아니라 ) 복사되는게 아니라 heap 메모리에 담기는 것 뿐, 변수는 이 heap 메모리에 담긴 정보를 가리키는 역할일 뿐
+		// -> 그럼 찐 메모리는 따로 있음 -> 데이터를 호출할 수 있음
+		
+		int count = userService.addUserByObject(user);
+		
+				
+		// 프라이머리 키 얻어오기 
+//		return "삽입 성공 : " + count + " id : " + user.getId();
+											// 		addUserByObject 호출 뒤에 불러오면 값을 불러올 수 있다 
+											// 레파지토리에서 전달 받
+		// info.html로 리다이렉트
+		model.addAttribute("result", user);
+		return "mvc/userInfo";
 	}
 	
 	// 얘는 ResponseBody가 안붙는다 

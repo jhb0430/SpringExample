@@ -17,6 +17,9 @@ public interface UserRepository {
 			);
 	
 	
+	public int insertUserByObject(User user);
+	// 메소드 이름 , 정보 , 파라미터 
+	
 	public User selectLastUser();
 	
 	

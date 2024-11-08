@@ -26,6 +26,50 @@
  	</insert>
  
  
+ <insert id="insertUserByObject" 
+ parameterType="com.jhb0430.spring.ex.mvc.domain.User"
+ useGeneratedKeys="true"
+ keyProperty="id"
+ >
+ <!--프라이머리 키 가져오기. 트랜젝션. 
+ 옵션 두가지 추가해주면 됨. 
+ useGeneratedKeys
+ keyProperty
+
+가져온 키 어디 저장되지 ? ->> 엔티티 클래스를 리턴타입으로 받아온 이유가 있겠지요?
+파라미터로 전달된 객체에
+entity 클래스 -> id, createdAt, updated << 비어있다
+ ㄴ 프라이머리키에 대응되는 변수가 있을거고 , 거기에다가 프라이머리 키를 저장시켜주는 것 .
+가져온 값을 담기 위해서 엔티티 클래스가 있어야 하는것 
+
+ -->	
+ 	
+ 	INSERT INTO
+ 			`new_user`
+ 	(
+ 			`name`
+ 			,`yyyymmdd`
+ 			,`email`
+ 			,`introduce`	
+ 	)
+ 	VALUE
+ 	(
+ 		#{name}
+ 		,#{yyyymmdd}
+ 		,#{email}
+ 		,#{introduce}
+ 		
+ 	);		
+ 
+ </insert>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  <select id="selectLastUser" resultType="com.jhb0430.spring.ex.mvc.domain.User">
  	
  	SELECT

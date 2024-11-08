@@ -24,6 +24,16 @@ public class UserService {
 				return count;
 	}
 	
+	// user 객체를 받아오는 기능 
+	
+	public int addUserByObject(User user){
+		int count = userRepository.insertUserByObject(user);
+	
+		return count;
+	}
+	
+	
+	
 	
 	public User getLastUser() {
 		// 셀렉트 쿼리 수행해야하네? -> 레파지토리 고고고 
