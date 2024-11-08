@@ -84,7 +84,6 @@ entity 클래스 -> id, createdAt, updated << 비어있다
  	ORDER BY `id` DESC 
  	LIMIT 
  	1;	
- 		;
  
  </select>
  
