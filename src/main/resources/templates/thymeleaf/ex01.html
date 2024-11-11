@@ -27,8 +27,8 @@
 			<!--  결과 : 500  -->
 		 <h4 th:text="'결과 : ' + ${number1 + number2}"></h4>
 		 <h4>결과 : [[${number1+number2}]]</h4><!-- 지양 -->
-		 <h4 th:text="/결과 : ${number1 + number2}/"></h4>
-		 
+		 <!--  <h4 th:text="\결과 : ${number1 + number2}\"></h4> -->
+		 <h4 th:text="|결과 : ${number1 + number2}|"></h4>
 		</th:block>
 
 
@@ -36,13 +36,12 @@
 		<!-- html escape 처리 -->	
 	
 		<div th:text="'<b>진한글씨</b>'"></div>
-		<div th:utext=""></div>
+		<div th:utext="'<b>진한글씨</b>'"></div>
 		
 		<h3>4. 조건문</h3>		
 		<th:block th:with="age=18">
 			<h4 th:if="false">true 일때만 태그가 포함(랜더링)된다</h4>
 			<h4 th:if="${age < 20}">미성년자 입니다.</h4>
-			<h4 th:unless>성인입니다.</h4>
 		</th:block>
 	
 </body>
