@@ -42,7 +42,32 @@
 		<th:block th:with="age=18">
 			<h4 th:if="false">true 일때만 태그가 포함(랜더링)된다</h4>
 			<h4 th:if="${age < 20}">미성년자 입니다.</h4>
+			<h4 th:if="${age >= 20}">나이가 20살 이상이다</h4>
+			<h4 th:if="${age < 30}">30살 미만이다</h4>
+			<h4 th:if="${age == 23}">나이가 23살이다</h4>
+			
+			
+			<!--  unless  - 부정 -->
+			<!--  if에 반대되는 조건을 쓰고 싶을 때 -->
+			<h4 th:if="${age >= 20}"> 성인입니다</h4>
+			<h4 th:unless="${age >= 20}"> 미성년입니다</h4>
+			
+			
 		</th:block>
 	
+	
+		<h3>4. switch</h3>
+		<!-- 봄 따뜻하다, 여름 덥다, 가을 시원하다, 겨울 춥다 -->
+		<th:block th:with="season = '가을'">
+			<div th:switch="${season}">
+				<h4 th:case="봄">따뜻하다</h4>
+				<h4 th:case="여름">덥다</h4>
+				<h4 th:case="가을">시원하다</h4>
+				<h4 th:case="겨울">춥다</h4>
+				<h4 th:case="*">잘못된 계절 이름 입니다.</h4>
+				<!--  * = anything -->
+			
+			</div>
+		</th:block>
 </body>
 </html>

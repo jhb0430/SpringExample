@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>반복문</title>
+</head>
+<body>
+	<h2>반복문</h2>
+
+	<h3>1. 숫자 반복</h3>
+	<!--  0 ~ 4 반복 -->
+	<div th:each="i:${#numbers.sequence(0,4)}">
+		<span th:text="${i}"></span>
+	</div>
+	
+	<h3>2. 문자열 리스트 반복</h3>
+	<!-- 
+	<div th:each="fruit:${fruitList}" th:text="${fruit}">체리</div>
+	 -->
+	 <!-- status : 반복하는 상태를 저장한 객체 -->
+	 <div th:each="fruit, status:${fruitList}">
+	 <span th:text="${fruit}">체리</span>
+	 <span th:text="|${status.index} ${status.count}|"></span>
+	 </div>
+	 
+	 <h3>3. 맵 리스트 반복</h3>
+	 
+	 <table border="1">
+	 	<thead>
+	 		<tr>
+	 			<th>이름</th>
+	 			<th>나이</th>
+	 			<th>취미</th>
+	 		</tr>
+	 	</thead>
+	 	<tbody>
+	 		<tr th:each="user, status:${userList}">
+	 			<td th:text="${user.name}">유재석</td>
+	 			<td th:text="${user.age}">52</td>
+	 			<td th:text="${user.hobby}">진행하기</td>
+	 		</tr>
+	 	</tbody>
+	 </table>
+	 
+	 
+</body>
+</html>
