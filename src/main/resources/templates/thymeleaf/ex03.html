@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>날짜, 문자열 다루기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+	<h2>날짜, 문자열 다루기</h2>
+
+	<h3>1. 날짜 시간 객체</h3>
+	
+	<div th:text="|Date : ${date}"|></div>
+	<div th:text="|LocalDate : ${localDate}"|></div>
+	<div th:text="|LocalDateTime : ${localDateTime}"|></div>
+	
+	<h3>2. 날짜 포맷</h3>
+	<div th:text="|Date : ${#dates.format(date,'yyyy년 M월 d일 H시 mm분 s초')}|"></div>
+	<div th:text="|LocalDate : ${#temporals.format(localDate,'yyyy년 MM월 dd일')}|"></div>
+	<div th:text="|LocalDateTime : ${#temporals.format(localDateTime,'yyyy/MM/dd/h:m:s')}|"></div>
+	
+	<h3>3. 문자열 함수</h3>
+	<div th:with="string1 = 'No pain. No gain'">
+		<h4 th:text="|문자열 길이 : ${#strings.length(string1)}|"></h4>
+		<h4 th:text="|No가 존재한다 : ${#strings.contains(string1,'No')}|"></h4>
+	
+	
+		<h4>특정 문자열로 시작하는지, 끝나는지 확인</h4>
+		<h4 th:if="${#strings.startsWith(string1, 'No')}">No로 시작한다</h4>
+		<h4 th:if="${#strings.endsWith(string1, 'gain.')}">gain. 으로 끝난다</h4>
+	</div>
+	
+	<div th:with="string2 ='I Love Chicken'">
+	
+		<h3>문자열 치환</h3>
+		
+		<h4 th:text="${#strings.replace(string2,'chicken','pizza')}"></h4>
+		<h4 th:text="${string2}"></h4>
+		<h3>문자열 자르기 </h3>
+		<h4 th:text="${#strings.substring(string2, 2, 6)}"></h4>
+		
+		<h3>문자열 쪼개기</h3>
+		<h4 th:test="${#strings.arraySplit(string2, ' ')[0]}"></h4>
+		<h4 th:test="${#strings.arraySplit(string2, ' ')[2]}"></h4>
+	</div>
+	
+	<div th:with="string3 ='				hello				'">
+	
+		<h3>공백 제거</h3>
+		<h3 th:text="${string3}"></h3>
+		<textarea th:text="${string3}"></textarea>
+		<textarea th:text="${#strings.trim(string3)}"></textarea>
+	</div>
+	
+	
+	
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+</body>
+</html>
