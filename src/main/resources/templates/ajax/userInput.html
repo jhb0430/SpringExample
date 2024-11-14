@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>사용자 추가</title>
+</head>
+<body>
+
+		<label>이름 : </label><input type="text" id="nameInput"><br>
+		<label>생년월일 : </label><input type="text" id="birthdayInput"><br>
+		<label>이메일 : </label><input type="text" id="emailInput"><br>
+		<label>자기소개 : </label><textarea cols="50" rows="7" id="introduceInput"></textarea>
+		<button type="button" id="addBtn">추가</button>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function(){
+		
+		$("#addBtn").on("click", function(){
+			
+			let name = $("#nameInput").val();
+			let birthday = $("#birthdayInput").val();
+			let email = $("#emailInput").val();
+			let introduce = $("#introduceInput").val();
+			
+			// 클릭이벤트로 입력된 값 가져왔으면 유효성 검사!!!!! 
+			
+			// 기능 수행 전에 사용자의 입력 과정 검증
+			if(name == ""){
+				alert("이름을 입력하세요!!");
+				return;
+			}
+			
+			// 입력된 값으로 /ajax/user/create API를 요청한다.
+		});
+		
+		
+		
+	});
+
+
+</script>
+
+
+
+
+</body>
+</html>
