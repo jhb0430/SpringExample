@@ -30,11 +30,51 @@
 			
 			// 기능 수행 전에 사용자의 입력 과정 검증
 			if(name == ""){
-				alert("이름을 입력하세요!!");
+				alert("이름을 입력하세요!!");	//유효성 검사
+				return;
+			}
+			
+			if(birthday == ""){
+				alert("생년월일을 입력하세요");
+				return;
+			}
+			
+			if(email == ""){
+				alert("이메일을 입력하세요");
+				return;
+			}
+			
+			if(introduce == ""){
+				alert("자기소개를 입력하세요");
 				return;
 			}
 			
 			// 입력된 값으로 /ajax/user/create API를 요청한다.
+			
+			// 옵션 나열
+			$.ajax({
+				
+//				type:"get"
+				type:"post"
+				, url:"/ajax/user/create"
+				, data: {"name":name,"birthday":birthday,"email":email,"introduce":introduce}
+				,success:function(response){
+					//  성공{ "result":"success"}
+					//  실패{ "result":"fail"}
+					
+					if(response.result == "success"){
+						alert("저장  성공!");
+					} else {
+						alert("저장 실패!");
+						
+					}
+				}
+					, error:function(){
+					alert("에러!! ")
+				}
+			});
+			
+			
 		});
 		
 		

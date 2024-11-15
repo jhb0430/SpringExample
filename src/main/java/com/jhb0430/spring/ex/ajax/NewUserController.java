@@ -3,11 +3,13 @@ package com.jhb0430.spring.ex.ajax;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jhb0430.spring.ex.mvc.service.UserService;
 
@@ -15,6 +17,7 @@ import com.jhb0430.spring.ex.mvc.service.UserService;
 @Controller
 public class NewUserController {
 
+	@Autowired
 	private UserService userService;
 	// 있는건 갖다 써라 
 	
@@ -23,7 +26,8 @@ public class NewUserController {
 	
 	// 이름 생일 이메일 자기소개
 	
-	@PostMapping("/ajax/user/create")
+	@ResponseBody // 얘가 없으면 리턴된 값이 html 경로로 인식해서 html을 찾으려고 시도한다... 
+	@PostMapping("/create")
 	public Map<String, String> crateUser(
 			@RequestParam("name") String name
 			,@RequestParam("birthday") String birthday
