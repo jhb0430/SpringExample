@@ -23,5 +23,6 @@ public interface UserRepository {
 	public User selectLastUser();
 	
 	
-	
+	public int countByEmail(@Param("email") String email);
+		// 조회 결과가 정수형태니까 int 가 리턴타입이 된다 . 
 }

@@ -44,4 +44,22 @@ public class UserService {
 		
 		return user;
 	}
+	
+	public boolean isDuplicateEmail(String email) {
+		// 이메일이 중복됐다 안됐다 
+		// 특정 행이 일치하면 카운트 하는 기능을 이용한다. 
+		
+		int count = userRepository.countByEmail(email);
+//		return count; -- > 무조건 count 리턴을 하는 게 아님!! 생각해야됨... ↓
+		// 이메일 전달받아서 맞다 아니다 판단해야하니까, 중복이 됐다 안됐다를 직접 판단해서
+		// T/F 로 리턴해줘야한다
+		if(count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	
 }

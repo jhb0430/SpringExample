@@ -57,13 +57,40 @@ public class NewUserController {
 		return resultMap;
 	}
 	
+	//View
 	@GetMapping("/input")
 	public String userInput() {
 		
 		return "ajax/userInput";
 	}
 	
-	
+	// email 전달 받고 , 이미 추가된 email 인지 확인
+	// API
+	// -> 요청을 처리하고 수행하는 기능까지는 똑같디
+	// 중복여부를 파악해주는 기능
+	@ResponseBody
+	@GetMapping("/duplicate-email")
+	public Map<String,Boolean> isDuplicateEmail(@RequestParam("email")String email) {
+		
+		boolean isDuplicate = userService.isDuplicateEmail(email);
+		
+		// Response 정리 .. 이제 결과를 전달해줘야하는데 (API)
+		// 중복 됨 {"isDuplicate" : true}
+		// 중복 안됨 {"isDuplicate" : false} 
+		//라고 셋팅을해서 리스폰스에 담아두면 쓰는 사람이 보고 알아서 거를것이다
+//						key, value 형태네? -> 맵
+
+			Map<String,Boolean> resultMap = new HashMap<>();
+				// isDuplicate가 트루면 맵에 {"isDuplicate" : true} 저장
+			if(isDuplicate) { // isDuplicate == true boolean 자체가 true false 인지 아닌지의 타입이라 안적어줘도 됨
+				resultMap.put("isDuplicate", true);
+			} else {
+				resultMap.put("isDuplicate", false);
+			}
+			
+			return resultMap;
+		
+	}
 	
 	
 	
